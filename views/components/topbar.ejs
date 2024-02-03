@@ -79,7 +79,7 @@
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden sm:pointer-events-none" id="mobile-menu">
+  <div class="hidden pointer-events-none" id="mobile-menu">
     <div class="space-y-1 px-2 pb-3 pt-2">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
       <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
@@ -89,37 +89,5 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      // Show mobile menu on hamburger button click
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobile-menu');
-
-      // Toggle hidden class on mobile menu
-      hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden', 'pointer-events-none');
-      });
-
-      // Hide mobile menu on click outside
-      hamburger.addEventListener('blur', () => {
-        mobileMenu.classList.add('hidden', 'pointer-events-none');
-      });
-      
-
-
-
-      // Show dropdown menu on profile button click
-      const profileMenu = document.getElementById('profile-menu');
-      const profileButton = document.getElementById('profile-button');
-
-      profileButton.addEventListener('click', () => {
-        profileMenu.classList.toggle('hidden');
-      });
-
-      // Hide dropdown menu on click outside
-      profileButton.addEventListener('blur', () => {
-        profileMenu.classList.add('hidden', 'pointer-events-none');
-      });
-    });
-  </script>
+  <script src="./js/components/topbar.js"></script>
 </nav>
