@@ -1,20 +1,26 @@
 // Import dependences
+// External
 import express from "express"
+
+// Personal
+import PageLanguage from "../models/PageLanguage.schema.js";
 
 // Define router
 const router = express.Router();
 
 // Define routes
 // Home route
-router.get("/", (req,res) => {
+router.get("/", async (req,res) => {
   // Get cookie
   const lang = req.cookies.lang || 'ES'
 
-  // Data
-  const data = {
-    title: "Perrita",
-    lang
-  }
+  // Get data
+  const data = await PageLanguage.findOne({
+    page: "home",
+    language: lang
+  })
+
+  // Render view
   res.render("home.ejs", data)
 })
 

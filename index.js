@@ -2,6 +2,7 @@
 // External
 import express from "express"
 import cookieParser from "cookie-parser";
+import connect from "./configuration/db.js"
 
 // Personal
 import routes from "./routes/index.routes.js"
@@ -11,6 +12,7 @@ const app = express();
 
 // Configure app
 app.set("view engine", "ejs")
+connect()
 
 // Define static files
 app.use(express.static("public"))
@@ -24,7 +26,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 // Define port
-const port = process.env.PORT || 5000;
+const port = process.env.PORT 
 
 // Define routes
 app.use("/", routes);
