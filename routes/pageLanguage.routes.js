@@ -1,36 +1,22 @@
 // Import dependences
 // External
-import express, { json } from "express";
+import express from "express";
 
 // Personal
+// Controllers
+import { create } from "./../controllers/pageLanguage/main.controller.js";
+
 // Schemas
-import PageLanguage from "../models/PageLanguage.schema.js";
+import { createSchema } from "./../schemas/pageLanguage/pageLanguage.schema.js";
+
+// Middlewares
+import { validateSchema } from "./../middlewares/schemas/schama.middleware.js";
 
 // Define router
 const router = express.Router();
 
 // Define routes
 // Home route
-router.post("/", async (req, res) => {
-  try {
-    // Data
-    const newPageLanguage = new PageLanguage(req.body);
-    const pageLanguage = await newPageLanguage.save()
-    
-    res
-      .json({
-        message: "Home route",
-        status: 200,
-        data: pageLanguage
-      })
-      .status(200);
-  } catch (error) {
-    console.log(error.message);
-    return json({
-      error: error.message,
-      status: 500,
-    }).status(500);
-  }
-});
+router.post("/", (req, res, next) => validateSchema(req, res, next, createSchema) , create);
 
 export default router;
