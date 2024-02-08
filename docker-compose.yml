@@ -9,7 +9,6 @@ services:
       
     environment:
       PORT: 5000
-      MONGO_URI: mongodb+srv://root:root@cluster0.c2lbl.mongodb.net/?retryWrites=true&w=majority
 
     volumes:
       - .:/app

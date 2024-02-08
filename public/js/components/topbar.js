@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Toggle hidden class on mobile menu
   hamburger.addEventListener("click", () => {
-    console.log("hola");
     mobileMenu.classList.toggle("hidden");
     mobileMenu.classList.toggle("pointer-events-none");
   });
@@ -21,14 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   profileButton.addEventListener("click", () => {
     profileMenu.classList.toggle("hidden");
-    profileMenu.classList.toggle("pointer-events-none");
   });
 
   // Hide dropdown menu on click outside
   profileButton.addEventListener("blur", () => {
     setTimeout(() => {
       profileMenu.classList.add("hidden");
-    }, 10);
+    }, 100);
   });
 
   // Change language
