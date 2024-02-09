@@ -1,9 +1,9 @@
 // Import dependences
 // External
-import express, { query } from "express"
+import express from "express"
 
 // Controllers
-import { render, changeLanguage } from "../controllers/home/home.controller.js";
+import { render, changeLanguage, year } from "../controllers/home/home.controller.js";
 
 // Define router
 const router = express.Router();
@@ -13,7 +13,7 @@ const router = express.Router();
 // Change language route
 router.post("/change-language/:lang", changeLanguage)
 
-router.get("/:year", render)
+router.get("/:year", year)
 
 router.get("/", render)
 

@@ -15,7 +15,7 @@ const render = async (req, res) => {
     });
 
     // Render view
-    res.render("pages/home/home.ejs", data);
+    res.render("pages/home/year.ejs", data);
   } catch (error) {
     res.json({
       error: error.message,
