@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const normalMenu = document.getElementById("menu-no-mobile");
   const path = window.location.pathname.substring(1);
 
+  // For load years in menu dynamically
   const curretnDate = new Date();
   let year = curretnDate.getFullYear();
   if (path !== "") {
@@ -32,7 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Hide mobile menu on click outside
   hamburger.addEventListener("blur", () => {
-    mobileMenu.classList.add("hidden");
+    setTimeout(() => {
+      mobileMenu.classList.add("hidden");
+    }, 100);
   });
 
   // Show dropdown menu on profile button click
