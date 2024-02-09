@@ -8,6 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Install pnpm globally
+RUN npm cache clean --force
 RUN npm install -g pnpm
 
 # Install the dependencies
