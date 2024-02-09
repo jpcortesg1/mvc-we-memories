@@ -2,17 +2,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // Show mobile menu on hamburger button click
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
+  const normalMenu = document.getElementById("menu-no-mobile");
+  const path = window.location.pathname.substring(1);
+
+  const curretnDate = new Date();
+  let year = curretnDate.getFullYear();
+  if (path !== "") {
+    year = parseInt(path);
+  }
+  for (let i = 0; i < 4; i++) {
+    let yearForItem = year - i;
+    const item = `
+        <a
+          href="/${yearForItem}"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium ${
+            yearForItem === parseInt(path) ? "bg-gray-900 text-white" : ""
+          }"
+          >${yearForItem}</a
+        >
+    `;
+    mobileMenu.children[0].insertAdjacentHTML("beforeend", item);
+    normalMenu.insertAdjacentHTML("beforeend", item);
+  }
 
   // Toggle hidden class on mobile menu
   hamburger.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
-    mobileMenu.classList.toggle("pointer-events-none");
   });
 
   // Hide mobile menu on click outside
-  // hamburger.addEventListener("blur", () => {
-  //   mobileMenu.classList.add("hidden");
-  // });
+  hamburger.addEventListener("blur", () => {
+    mobileMenu.classList.add("hidden");
+  });
 
   // Show dropdown menu on profile button click
   const profileMenu = document.getElementById("profile-menu");
@@ -42,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const { status } = data;
 
       if (status !== 200) {
-        console.log(data)
+        console.log(data);
         throw new Error("Error changing language");
       }
 
@@ -63,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     changeLanguageSpanishButton,
     changeLanguageEnglishButton,
   ];
+
   buttonsLanguage.forEach((button) => {
     button.addEventListener("click", (e) => {
       const lang = e.target.name;
