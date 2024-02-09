@@ -7,6 +7,10 @@ const render = async (req, res) => {
   try {
     // Get cookie
     const lang = req.cookies.lang || "ES";
+    const { year } = req.params;
+    if (isNaN(year)) {
+      return res.redirect("/");
+    }
 
     // Get data
     const data = await PageLanguage.findOne({

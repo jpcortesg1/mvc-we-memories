@@ -11,9 +11,9 @@ import pageLanguageRoutes from "./pageLanguage.routes.js"
 const router = express.Router();
 
 // Use routes
-router.use("/", homeRoutes)
 router.use("/users", userRoutes)
 router.use("/page-language", pageLanguageRoutes)
+router.use("/", homeRoutes)
 
 // Export router
 export default router;

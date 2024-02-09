@@ -1,6 +1,5 @@
 const changeLanguage = (req, res) => {
   try {
-    console.log("hola")
     const languages = ['ES', 'EN']
     const lang = req.params.lang.toUpperCase()
 
