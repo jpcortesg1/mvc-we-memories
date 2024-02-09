@@ -651,6 +651,18 @@ video {
   right: 10%;
 }
 
+.bottom-\[5\%\] {
+  bottom: 5%;
+}
+
+.right-\[5\%\] {
+  right: 5%;
+}
+
+.bottom-\[2\%\] {
+  bottom: 2%;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1257,6 +1269,10 @@ video {
 
   .sm\:inset-auto {
     inset: auto;
+  }
+
+  .sm\:bottom-\[5\%\] {
+    bottom: 5%;
   }
 
   .sm\:col-span-full {
