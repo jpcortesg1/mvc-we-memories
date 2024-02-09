@@ -1,3 +1,5 @@
+// Import dependences
+// External
 import mongoose from "mongoose";
 
 const PageLanguageSchema = new mongoose.Schema(
