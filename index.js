@@ -2,10 +2,11 @@
 // External
 import express from "express"
 import cookieParser from "cookie-parser";
-import connect from "./configuration/db.js"
 
 // Personal
+import connect from "./configuration/db.js"
 import routes from "./routes/index.routes.js"
+import { validateNecessayCokies } from "./middlewares/cookies/index.middleware.js"
 
 // Define app
 const app = express();
@@ -24,6 +25,7 @@ app.set("views", "views")
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use(validateNecessayCokies)
 
 // Define port
 const port = process.env.PORT 
