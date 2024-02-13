@@ -21,22 +21,11 @@ const uploadFile = async (name, buffer) => {
 
   try {
     const data = await uploadAsync(params);
-    console.log("File uploaded successfully:", data.Location);
     return data;
   } catch (error) {
     console.error("Error uploading file:", error);
     throw error;
   }
-
-  // s3.upload(params, (err, data) => {
-  //   if (err) {
-  //     console.error(err);
-  //     return;
-  //   }
-
-  //   console.log("🚀 ~ s3.upload ~ data:", data);
-  //   return data;
-  // });
 };
 
 export default uploadFile;

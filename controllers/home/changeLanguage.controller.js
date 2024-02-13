@@ -1,30 +1,30 @@
 const changeLanguage = (req, res) => {
   try {
-    const languages = ['ES', 'EN']
-    const lang = req.params.lang.toUpperCase()
+    const languages = ["ES", "EN"];
+    const lang = req.params.lang.toUpperCase();
 
     if (!languages.includes(lang)) {
       return res.json({
-        error: 'Language not found',
-        status: 400
-      })
+        error: "Language not found",
+        status: 400,
+      });
     }
-    
-    res.cookie("lang", lang, {maxAge: 900000, httpOnly: true})
-    
+
+    res.cookie("lang", lang, { maxAge: 900000, httpOnly: true });
+
     return res.json({
-      message: 'Change of language success!',
+      message: "Change of language success!",
       status: 200,
       data: {
-        language: lang
-      }
-    })
+        language: lang,
+      },
+    });
   } catch (error) {
     return res.json({
       error: error.message,
-      status: 500  
-    })
+      status: 500,
+    });
   }
-}
+};
 
 export default changeLanguage;
