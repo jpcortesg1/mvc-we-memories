@@ -29,15 +29,9 @@ const create = async (req, res) => {
       idUser: uuid,
       year,
     });
-    const memory = await newMemory.save();
+    await newMemory.save();
 
-    return res
-      .json({
-        message: "Memory created successfully",
-        status: 200,
-        data: memory,
-      })
-      .status(200);
+    return res.redirect(`/${year}`);
   } catch (error) {
     console.log("Error: ", error);
     return res.status(500).json({ error: error.message, status: 500 });

@@ -1,0 +1,32 @@
+<div
+  class="flex flex-col max-w-[370px] min-w-[340px] shadow-2xl rounded-lg justify-center items-center gap-2 p-4"
+>
+  <img
+    class="w-[300px] border-b-2 border-gray-500 pb-4"
+    src="<%=memory.urlImage%>"
+    alt=""
+  />
+  <h4 class="text-xl"><%= memory.title %></h4>
+  <span class="text-base"><%= memory.content %></span>
+  <div class="flex justify-between w-full items-end">
+    <span class="text-sm"><%= memory.ago %> ago</span>
+    <% if(memory.isOwner){ %>
+    <divc class="flex gap-4">
+      <button class="p-2 bg-yellow-400 rounded-full shadow-2xl">
+        <img
+          width="22"
+          src="https://upload.wikimedia.org/wikipedia/commons/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg"
+          alt=""
+        />
+      </button>
+      <button class="p-2 bg-red-400 rounded-full shadow-2xl" id="<%=memory._id%>" name="delete-memory">
+        <img
+          width="22"
+          src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"
+          alt=""
+        />
+      </button>
+    </divc>
+    <% } %>
+  </div>
+</div>
