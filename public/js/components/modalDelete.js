@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
   deleteMemoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const idMemory = button.getAttribute("id");
-      titleAlert.innerText = "Delete Memory adfasd";
+      titleAlert.innerText = "Delete Memory";
       descriptionAlert.innerText =
-        "Are you sure you want to delete this memory? dfasdas";
-      cancelAlert.innerText = "Cancel dasd";
-      confirmAlert.innerText = "Confirm dasd";
+        "Are you sure you want to delete this memory?";
+      cancelAlert.innerText = "Cancel";
+      confirmAlert.innerText = "Confirm";
 
       alert.classList.remove("hidden");
 

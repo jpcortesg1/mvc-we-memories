@@ -25,22 +25,20 @@ const render = async (req, res) => {
       year: year,
     }).sort({ createdAt: -1 });
     const arrayOfMemories = memories.map((memory) => {
-      const ago = Math.floor(new Date() - memory.createdAt);
-      let realAgo = ago / 1000;
+      const ago = Math.floor((new Date() - memory.createdAt) / 1000);
+      let realAgo = ago;
       let complementary = "s";
-      if (realAgo > 60) {
-        realAgo = realAgo / 60;
+
+      if (realAgo >= 60 && realAgo < 3600) {
+        realAgo = Math.floor(realAgo / 60);
         complementary = "m";
-      }
-      if (realAgo > 60) {
-        realAgo = realAgo / 60;
+      } else if (realAgo >= 3600 && realAgo < 86400) {
+        realAgo = Math.floor(realAgo / 3600);
         complementary = "h";
-      }
-      if (realAgo > 24) {
-        realAgo = realAgo / 24;
+      } else if (realAgo >= 86400) {
+        realAgo = Math.floor(realAgo / 86400);
         complementary = "d";
       }
-      realAgo = Math.floor(realAgo);
       return {
         ...memory._doc,
         ago: `${realAgo}${complementary}`,

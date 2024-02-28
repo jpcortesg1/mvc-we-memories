@@ -1,11 +1,13 @@
 <div
   class="flex flex-col max-w-[370px] min-w-[340px] shadow-2xl rounded-lg justify-center items-center gap-2 p-4"
 >
-  <img
-    class="w-[300px] border-b-2 border-gray-500 pb-4"
-    src="<%=memory.urlImage%>"
-    alt=""
-  />
+  <div class="overflow-hidden min-h-[200px] max-h-[200px] flex items-center justify-center"> 
+    <img
+      class="pb-4 h-full object-cover"
+      src="<%= memory.urlImage %>"
+      alt="<%= memory.content %>"
+    />
+  </div>
   <h4 class="text-xl"><%= memory.title %></h4>
   <span class="text-base"><%= memory.content %></span>
   <div class="flex justify-between w-full items-end">
@@ -19,7 +21,11 @@
           alt=""
         />
       </button>
-      <button class="p-2 bg-red-400 rounded-full shadow-2xl" id="<%=memory._id%>" name="delete-memory">
+      <button
+        class="p-2 bg-red-400 rounded-full shadow-2xl"
+        id="<%=memory._id%>"
+        name="delete-memory"
+      >
         <img
           width="22"
           src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png"
