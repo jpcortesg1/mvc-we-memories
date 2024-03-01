@@ -17,5 +17,10 @@ router.use("/users", userRoutes);
 router.use("/page-language", pageLanguageRoutes);
 router.use("/", homeRoutes);
 
+// Define 404 route
+router.use("*", (req, res) => {
+  res.redirect("/")
+});
+
 // Export router
 export default router;
