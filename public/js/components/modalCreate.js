@@ -1,3 +1,5 @@
+import { clearModal } from "./modalEdit.js";
+
 // open-create-modal
 document.addEventListener("DOMContentLoaded", () => {
   const openCreateModalButton = document.getElementById(
@@ -14,10 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputFileCreate = document.getElementById("input-file-create");
 
   openCreateModalButton.addEventListener("click", () => {
+    clearModal();
     modalCreate.classList.toggle("hidden");
   });
 
   closeCreateModalButton.addEventListener("click", () => {
+    clearModal();
     modalCreate.classList.add("hidden");
   });
 
