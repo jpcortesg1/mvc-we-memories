@@ -5,7 +5,11 @@ import multer from "multer";
 
 // Personal
 // Controllers
-import { create, destroy } from "./../controllers/memroy/main.controllers.js";
+import {
+  create,
+  destroy,
+  update,
+} from "./../controllers/memroy/main.controllers.js";
 import { haveCredentialsUserId } from "../middlewares/memory/main.middleware.js";
 
 // Middlewares
@@ -18,6 +22,9 @@ router.post("/", multer().single("file"), create);
 
 // Delete
 router.delete("/:id", haveCredentialsUserId, destroy);
+
+// Update
+router.patch("/:id", multer().single("file"), haveCredentialsUserId, update);
 
 // Export router
 export default router;

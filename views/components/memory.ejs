@@ -1,7 +1,9 @@
 <div
   class="flex flex-col max-w-[370px] min-w-[340px] shadow-2xl rounded-lg justify-center items-center gap-2 p-4"
 >
-  <div class="overflow-hidden min-h-[200px] max-h-[200px] flex items-center justify-center"> 
+  <div
+    class="overflow-hidden min-h-[200px] max-h-[200px] flex items-center justify-center"
+  >
     <img
       class="pb-4 h-full object-cover"
       src="<%= memory.urlImage %>"
@@ -14,8 +16,10 @@
     <span class="text-sm"><%= memory.ago %> ago</span>
     <% if(memory.isOwner){ %>
     <divc class="flex gap-4">
-      <button class="p-2 bg-yellow-400 rounded-full shadow-2xl"
+      <button
+        class="p-2 bg-yellow-400 rounded-full shadow-2xl"
         name="edit-memory"
+        id="<%=memory._id%>"
       >
         <img
           width="22"

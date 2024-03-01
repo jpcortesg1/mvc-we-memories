@@ -1,3 +1,4 @@
+// Objetive: Set modal like default when it's closed
 const clearModal = () => {
   document.getElementById("modal-title").innerText =
     "Create memory for this year";
@@ -24,33 +25,65 @@ document.addEventListener("DOMContentLoaded", () => {
     "button-create-modal-memory"
   );
 
+  // Add event listener to each button
   editMemoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      // Show modal with different values
       editModal.classList.toggle("hidden");
       modalTitle.innerText = "Edit this memory";
       buttonCreateModalMemory.innerText = "Edit";
 
+      // Get values
       const parentButtonEdit = button.parentElement.parentElement.parentElement;
       const image = parentButtonEdit.querySelector("img");
       const titleMemory = parentButtonEdit.querySelector("h4");
       const contentMemory = parentButtonEdit.querySelector("span");
 
+      // Save initial values
+      const initialTitle = titleMemory.innerText;
+      const initialContent = contentMemory.innerText;
+
+      // Set values
       title.value = titleMemory.innerText;
       content.value = contentMemory.innerText;
       fileUploadCreate.setAttribute("src", image.getAttribute("src"));
       fileUploadCreate.classList.remove("hidden");
 
-      const onClickEdit = (e) => {
+      // Function to edit memory
+      const onClickEdit = async (e) => {
         e.preventDefault();
         const form = new FormData();
-        form.append("title", title.value);
-        form.append("content", content.value);
 
-        if (inputFileCreate.files.length > 0) {
-          form.append("image", inputFileCreate.files[0]);
+        // Save values if they are different
+        initialTitle != title.value && form.append("title", title.value);
+        initialContent != content.value &&
+          form.append("content", content.value);
+        inputFileCreate.files.length > 0 &&
+          form.append("file", inputFileCreate.files[0]);
+
+        // No changes
+        if (Array.from(form.entries()).length <= 0) {
+          clearModal();
+          buttonCreateModalMemory.removeEventListener("click", onClickEdit);
+          return;
         }
 
+        try {
+          const id = button.getAttribute("id");
+          const res = await fetch(`/memories/${id}`, {
+            method: "PATCH",
+            body: form,
+          });
+          const { status } = await res.json();
+          if (status === 200) {
+            location.reload();
+            return;
+          }
+        } catch (error) {
+          console.log(error);
+        }
         clearModal();
+        buttonCreateModalMemory.removeEventListener("click", onClickEdit);
       };
 
       buttonCreateModalMemory.addEventListener("click", onClickEdit);
