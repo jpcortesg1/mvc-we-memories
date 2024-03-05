@@ -11,7 +11,7 @@ const validateNecessayCokies = (req, res, next) => {
     });
   }
   if (!req.cookies.lang) {
-    res.cookie("lang", "ES", { maxAge: 900000, httpOnly: true });
+    res.cookie("lang", "ES", { maxAge: 900000 });
   }
   next();
 };

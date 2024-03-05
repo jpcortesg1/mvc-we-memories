@@ -1,13 +1,65 @@
+const dataEn = {
+  title: "Create memory for this year",
+  labelTitle: "Title",
+  placeholderTitle: "My best year",
+  labelContent: "Description",
+  labelFile: "Photo",
+  buttonChangeFile: "Change",
+  buttonCreate: "Create",
+  buttonCancel: "Cancel",
+};
+
+const dataEs = {
+  title: "Crea un recuerdo para este año",
+  labelTitle: "Título",
+  placeholderTitle: "Mi mejor año",
+  labelContent: "Descripción",
+  labelFile: "Foto",
+  buttonChangeFile: "Cambiar",
+  buttonCreate: "Crear",
+  buttonCancel: "Cancelar",
+};
+
 // Objetive: Set modal like default when it's closed
 const clearModal = () => {
-  document.getElementById("modal-title").innerText =
-    "Create memory for this year";
-  document.getElementById("button-create-modal-memory").innerText = "Create";
+  // Get cokies lang
+  const lang = document.cookie
+    .split(";")
+    .find((cookie) => cookie.includes("lang"))
+    .split("=")[1];
+  const data = lang === "EN" ? dataEn : dataEs;
+
+  document.getElementById("modal-title").innerText = data.title;
+  document.getElementById("button-create-modal-memory").innerText =
+    data.buttonCreate;
+  document
+    .getElementById("title")
+    .setAttribute("placeholder", data.placeholderTitle);
+  document.getElementById("label-title-create").innerText = data.labelTitle;
+  document.getElementById("label-content-create").innerText = data.labelContent;
+  document.getElementById("label-file-create").innerText = data.labelFile;
+  document.getElementById("button-upload-image-create").innerText =
+    data.buttonChangeFile;
+  document.getElementById("close-create-modal-button").innerText =
+    data.buttonCancel;
+
   document.getElementById("title").value = "";
   document.getElementById("content").value = "";
   document.getElementById("file-upload-create").setAttribute("src", "");
   document.getElementById("file-upload-create").classList.add("hidden");
   document.getElementById("modal-create").classList.add("hidden");
+};
+
+const dataEditEn = {
+  ...dataEn,
+  title: "Edit this memory",
+  buttonCreate: "Edit",
+};
+
+const dataEditEs = {
+  ...dataEs,
+  title: "Edita este recuerdo",
+  buttonCreate: "Editar",
 };
 
 // open-create-modal
@@ -16,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const editModal = document.getElementById("modal-create");
 
   // Items modal
-  const modalTitle = document.getElementById("modal-title");
   const title = document.getElementById("title");
   const content = document.getElementById("content");
   const inputFileCreate = document.getElementById("input-file-create");
@@ -30,8 +81,26 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       // Show modal with different values
       editModal.classList.toggle("hidden");
-      modalTitle.innerText = "Edit this memory";
-      buttonCreateModalMemory.innerText = "Edit";
+      const lang = document.cookie
+        .split(";")
+        .find((cookie) => cookie.includes("lang"))
+        .split("=")[1];
+      const data = lang === "EN" ? dataEditEn : dataEditEs;
+
+      document.getElementById("modal-title").innerText = data.title;
+      document.getElementById("button-create-modal-memory").innerText =
+        data.buttonCreate;
+      document
+        .getElementById("title")
+        .setAttribute("placeholder", data.placeholderTitle);
+      document.getElementById("label-title-create").innerText = data.labelTitle;
+      document.getElementById("label-content-create").innerText =
+        data.labelContent;
+      document.getElementById("label-file-create").innerText = data.labelFile;
+      document.getElementById("button-upload-image-create").innerText =
+        data.buttonChangeFile;
+      document.getElementById("close-create-modal-button").innerText =
+        data.buttonCancel;
 
       // Get values
       const parentButtonEdit = button.parentElement.parentElement.parentElement;

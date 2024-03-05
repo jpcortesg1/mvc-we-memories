@@ -1,13 +1,13 @@
 <%- include('../../layouts/main.ejs') %>
 
-<main class="flex flex-col min-h-[calc(100vh_-_64px)] justify-center gap-10 container mx-auto">
-  <h1 class="text-4xl text-center">Lorem ipsum dolor sit amet.</h1>
+<main
+  class="flex flex-col min-h-[calc(100vh_-_64px)] justify-center gap-10 container mx-auto"
+>
+  <h1 class="text-4xl text-center"><%= language.content.title %></h1>
 
   <p class="w-[80%] mx-auto sm:w-[60%] text-justify">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum at maxime
-    quisquam debitis, voluptates alias ratione natus dolorum quibusdam ullam! oe hola
+    <%= language.content.description %>
   </p>
 
   <%- include('../../components/searchYear.ejs') %>
-
 </main>

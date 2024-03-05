@@ -4,10 +4,16 @@ import express from "express";
 
 // Personal
 // Controllers
-import { create } from "./../controllers/pageLanguage/main.controller.js";
+import {
+  create,
+  update,
+} from "./../controllers/pageLanguage/main.controller.js";
 
 // Schemas
-import { createSchema } from "./../schemas/pageLanguage/pageLanguage.schema.js";
+import {
+  createSchema,
+  updateSchema,
+} from "./../schemas/pageLanguage/pageLanguage.schema.js";
 
 // Middlewares
 import { validateSchema } from "./../middlewares/schemas/schama.middleware.js";
@@ -16,7 +22,18 @@ import { validateSchema } from "./../middlewares/schemas/schama.middleware.js";
 const router = express.Router();
 
 // Define routes
-// Home route
-router.post("/", (req, res, next) => validateSchema(req, res, next, createSchema) , create);
+// Create
+router.post(
+  "/",
+  (req, res, next) => validateSchema(req, res, next, createSchema),
+  create
+);
+
+// Update
+router.patch(
+  "/:id",
+  (req, res, next) => validateSchema(req, res, next, updateSchema),
+  update
+);
 
 export default router;

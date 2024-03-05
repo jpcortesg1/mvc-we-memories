@@ -18,4 +18,8 @@ RUN pnpm install
 EXPOSE 5000
 
 # Start the application
-CMD ["pnpm", "run", "dev"]
+# For development
+CMD ["pnpm", "run", "dev"] 
+
+# For production
+# CMD ["pnpm", "run", "start"] 

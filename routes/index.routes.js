@@ -13,8 +13,8 @@ const router = express.Router();
 
 // Use routes
 router.use("/memories", memoryRoutes);
-router.use("/users", userRoutes);
-router.use("/page-language", pageLanguageRoutes);
+// router.use("/users", userRoutes);
+// router.use("/page-language", pageLanguageRoutes);
 router.use("/", homeRoutes);
 
 // Define 404 route

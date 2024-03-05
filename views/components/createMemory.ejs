@@ -2,7 +2,7 @@
   id="open-create-modal-button"
   class="sticky bottom-[2%] left-[5%] sm:bottom-[5%] bg-blue-600 rounded-lg text-gray-100 p-3 shadow-lg"
 >
-  Create
+  <%= language.content.modal.button %>
 </button>
 
 <div
@@ -40,6 +40,7 @@
                   <label
                     for="title"
                     class="block text-sm font-medium leading-6 text-gray-900"
+                    id="label-title-create"
                     >Title</label
                   >
                   <div class="mt-2">
@@ -63,6 +64,7 @@
                   <label
                     for="content"
                     class="block text-sm font-medium leading-6 text-gray-900"
+                    id="label-content-create"
                     >Description</label
                   >
                   <div class="mt-2">
@@ -80,6 +82,7 @@
                   <label
                     for="input-file-create"
                     class="block text-sm font-medium leading-6 text-gray-900"
+                    id="label-file-create"
                     >Photo</label
                   >
                   <input

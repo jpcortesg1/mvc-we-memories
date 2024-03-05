@@ -16,7 +16,7 @@ const render = async (req, res) => {
 
     // Get language
     const language = await PageLanguage.findOne({
-      page: "home",
+      page: "year",
       language: lang,
     });
 
@@ -39,9 +39,13 @@ const render = async (req, res) => {
         realAgo = Math.floor(realAgo / 86400);
         complementary = "d";
       }
+      let finishAgo =
+        lang === "ES"
+          ? `Hace ${realAgo}${complementary}`
+          : `${realAgo}${complementary} Ago`;
       return {
         ...memory._doc,
-        ago: `${realAgo}${complementary}`,
+        ago: finishAgo,
         isOwner: memory.idUser === uuid,
       };
     });

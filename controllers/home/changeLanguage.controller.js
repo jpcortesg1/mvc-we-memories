@@ -10,7 +10,7 @@ const changeLanguage = (req, res) => {
       });
     }
 
-    res.cookie("lang", lang, { maxAge: 900000, httpOnly: true });
+    res.cookie("lang", lang, { maxAge: 900000 });
 
     return res.json({
       message: "Change of language success!",

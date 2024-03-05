@@ -1,6 +1,19 @@
 // open-create-modal
 document.addEventListener("DOMContentLoaded", () => {
   const deleteMemoryButtons = document.getElementsByName("delete-memory");
+  const dataEn = {
+    title: "Delete this memory",
+    buttonAccept: "Delete",
+    buttonCancel: "Cancel",
+    description: "Are you sure you want to delete this memory?",
+  };
+
+  const dataEs = {
+    title: "Borrar este recuerdo",
+    buttonAccept: "Borrar",
+    buttonCancel: "Cancelar",
+    description: "¿Estás seguro de que quieres borrar este recuerdo?",
+  };
 
   // Alert
   const alert = document.getElementById("alert");
@@ -11,12 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   deleteMemoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      const lang = document.cookie
+        .split(";")
+        .find((cookie) => cookie.includes("lang"))
+        .split("=")[1];
+      const data = lang === "EN" ? dataEn : dataEs;
+
       const idMemory = button.getAttribute("id");
-      titleAlert.innerText = "Delete Memory";
-      descriptionAlert.innerText =
-        "Are you sure you want to delete this memory?";
-      cancelAlert.innerText = "Cancel";
-      confirmAlert.innerText = "Confirm";
+      titleAlert.innerText = data.title;
+      descriptionAlert.innerText = data.description;
+      cancelAlert.innerText = data.buttonCancel;
+      confirmAlert.innerText = data.buttonAccept;
 
       alert.classList.remove("hidden");
 
