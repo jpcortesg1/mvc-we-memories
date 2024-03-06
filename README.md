@@ -2,7 +2,7 @@
 
 Memories is a simple application designed to preserve and relive memories from past years. It consists of two main pages that offer an intuitive and user-friendly experience.
 
-Vistion in: memories.jpcortesg.online
+### Access the application in: https://memories.jpcortesg.online
 
 ## Features
 
